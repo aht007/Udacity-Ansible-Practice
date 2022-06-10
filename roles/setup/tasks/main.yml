@@ -1,28 +1,30 @@
 ---
-- name: "update apt packages."
-  become: yes
-  apt:
-    update_cache: yes
+- name: "update yum packages."
+  become: true
+  yum:
+    update_cache: true
 
 - name: "upgrade packages"
-  become: yes
-  apt:
-    upgrade: yes
+  become: true
+  yum:
+    name: "*"
+    state: latest
 
 - name: "Install NodeJs and NPM"
-  apt:
+  yum:
     name: "nodejs"
     state: latest
     update_cache: yes
   
 - name: "Install pm2"
-  apt:
+  npm:
     name: "pm2"
+    global: yes
     state: latest
-    update_cache: yes
+    production: yes
 
 - name: "Create web directory"
-  file:
+  ansible.builtin.file:
     path: ~/web
     state: directory
     mode: 0755

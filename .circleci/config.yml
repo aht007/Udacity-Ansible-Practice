@@ -30,5 +30,5 @@ workflows:
   main_workflow:
     jobs:
       - aws-cli-cred-setup:
-          context: aws
+          context: aws-cli
       - inventory-job

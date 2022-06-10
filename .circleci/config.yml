@@ -4,7 +4,7 @@ orbs:
   aws-cli: circleci/aws-cli@2.0
 
 jobs:
-    aws-cli-cred-setup:
+    aws-job:
         docker:
         - image: cimg/base:2021.04
     executor: aws-cli/default
@@ -27,7 +27,5 @@ jobs:
 workflows:
   main_workflow:
     jobs:
-      - aws-cli-cred-setup
-      - inventory-job:
-          requires:
-            - aws-cli-cred-setup
+      - aws-job
+

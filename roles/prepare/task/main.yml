@@ -1,7 +1,5 @@
----
-- name: Setup Apache Server
+- name: "Webpage"
   hosts: localhost
-
-  roles:
+  roles: 
     - prepare
     - apache
